@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PULSE | Music Production</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    
+    body {
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header {
+      padding: 40px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    
+    .logo span {
+      color: #ff3060;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 30px;
+    }
+    
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+    
+    nav ul li a:hover {
+      color: #ff3060;
+    }
+    
+    .hero {
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    
+    .hero-content {
+      max-width: 600px;
+    }
+    
+    .hero h1 {
+      font-size: 64px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    
+    .hero p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #aaa;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: #ff3060;
+      color: #fff;
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 3px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.3s ease;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+    
+    .visual-element {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(45deg, #ff3060, #7928ca);
+      border-radius: 50%;
+      opacity: 0.6;
+      filter: blur(60px);
+      animation: pulse 8s infinite alternate;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: translateY(-50%) scale(0.8);
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateY(-50%) scale(1);
+        opacity: 0.6;
+      }
+    }
+    
+    .team-section {
+      padding: 100px 0;
+    }
+    
+    .section-title {
+      font-size: 36px;
+      margin-bottom: 60px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: #ff3060;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 40px;
+    }
+    
+    .team-member {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    
+    .team-member:hover {
+      transform: translateY(-10px);
+    }
+    
+    .member-img {
+      height: 300px;
+      background: #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .member-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .member-img span {
+      font-size: 100px;
+      opacity: 0.2;
+    }
+    
+    .member-info {
+      padding: 20px;
+    }
+    
+    .member-name {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+    
+    .member-role {
+      color: #ff3060;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    
+    .member-bio {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #aaa;
+    }
+    
+    .projects-section {
+      padding: 100px 0;
+    }
+    
+    .projects-container {
+      margin-top: 40px;
+    }
+    
+    .project {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .project-title {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    
+    .project-desc {
+      margin-bottom: 20px;
+      color: #aaa;
+    }
+    
+    .audio-player {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+    
+    .audio-player .track-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .audio-player .cover-art {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      margin-right: 20px;
+      overflow: hidden;
+    }
+    
+    .audio-player .cover-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .audio-player .track-details {
+      flex: 1;
+    }
+    
+    .audio-player .track-title {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    
+    .audio-player .track-artist {
+      font-size: 14px;
+      color: #aaa;
+    }
+    
+    .audio-player audio {
+      width: 100%;
+      border-radius: 30px;
+      outline: none;
+    }
+    
+    audio::-webkit-media-controls-panel {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    audio::-webkit-media-controls-play-button {
+      background-color: #ff3060;
+      border-radius: 50%;
+    }
+    
+    .contact-section {
+      padding: 100px 0;
+      background: rgba(255, 48, 96, 0.05);
+    }
+    
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 16px;
+    }
+    
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    input:focus, textarea:focus {
+      outline: 1px solid rgba(255, 48, 96, 0.5);
+    }
+    
+    footer {
+      padding: 30px 0;
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .social-link {
+      display: inline-block;
+      margin: 0 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background: #ff3060;
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 40px;
+      }
+      
+      .visual-element {
+        width: 300px;
+        height: 300px;
+        right: -100px;
+      }
+      
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">PULSE<span>.</span></div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Creating the Sound of Tomorrow</h1>
+        <p>We're a collective of creative minds pushing the boundaries of music production. From rap to digital innovation, we craft unique sonic experiences.</p>
+        <a href="#projects" class="btn">Our Work</a>
+      </div>
+      <div class="visual-element"></div>
+    </section>
+  </div>
+  
+  <section id="team" class="team-section">
+    <div class="container">
+      <h2 class="section-title">Our Team</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="ufuk.jpeg" alt="Ufuk profile photo">
+          </div>
+          <div class="member-info">
+            <h3 class="member-name">Ufuk</h3>
+            <div class="member-role">Artist</div>
+            <p class="member-bio">The voice and creative force behind our productions. Ufuk combines powerful lyrics with innovative flows to create memorable tracks.</p>
+          </div>
+        </div>
+        
+        <div class="team-member">
+          <div class="member-img">
+            <img src="engin.jpeg" alt="Engin profile photo">
+          </div>
+          <div class="member-info">
+            <h3 class="member-name">Engin</h3>
+            <div class="member-role">PR</div>
+            <p class="member-bio">The public face of our brand. Engin builds connections and manages our relationship with the industry, ensuring our music reaches the right audience.</p>
+          </div>
+        </div>
+        
+        <div class="team-member">
+          <div class="member-img">
+            <img src="ilker.jpg" alt="Ilker profile photo">
+          </div>
+          <div class="member-info">
+            <h3 class="member-name">Ilker</h3>
+            <div class="member-role">Digital</div>
+            <p class="member-bio">The digital architect behind our online presence. Ilker bridges music and technology to create immersive digital experiences.</p>
+          </div>
+        </div>
+        
+        <div class="team-member">
+          <div class="member-img">
+            <img src="berko.jpeg" alt="Berko profile photo">
+          </div>
+          <div class="member-info">
+            <h3 class="member-name">Berko</h3>
+            <div class="member-role">Manager</div>
+            <p class="member-bio">The strategic mind guiding our creative vision. Berko connects the dots and ensures our artistic goals become reality.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="projects" class="projects-section">
+    <div class="container">
+      <h2 class="section-title">Latest Projects</h2>
+      <div class="projects-container">
+        <div class="project">
+          <h3 class="project-title">New Single Release</h3>
+          <p class="project-desc">Our latest track showcases Ufuk's lyrical prowess over innovative production. Listen now.</p>
+          <div class="audio-player">
+            <div class="track-info">
+              <div class="cover-art">
+                <img src="uf7k.jpg" alt="Track cover art">
+              </div>
+              <div class="track-details">
+                <h4 class="track-title">BAZEN - Latest Single</h4>
+                <p class="track-artist">Artist: UF7K</p>
+              </div>
+            </div>
+            <!-- Native HTML5 audio player - You'll need to add your MP3 file path here -->
+            <audio controls>
+              <source src="bazen.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-form">
+        <div class="form-group">
+          <input type="text" placeholder="Your Name">
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Your Email">
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Your Message"></textarea>
+        </div>
+        <a href="#" class="btn">Send Message</a>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container">
+      <p>© 2025 PULSE. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
